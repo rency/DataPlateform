@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="${struts.devMode}" />
+    <constant name="struts.serve.static.browserCache" value="${struts.serve.static.browserCache}" />
+    <constant name="struts.custom.i18n.resources" value="messageResources" />
+    <constant name="struts.custom.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+    <constant name="struts.multipart.maxSize" value="20971520"/>
+    
+    <!-- root package -->
+    <package name="dpf-default" extends="json-default">
+    	
+    	<interceptors>
+    		<interceptor name="authInterceptor" class="com.rency.dpf.interceptors.AuthencationInterceptor">
+    			<param name="authFlag">true</param>
+    		</interceptor>
+    		<interceptor name="jsonInterceptor" class="com.rency.dpf.interceptors.JSONInterceptor">
+    			<param name="authFlag">true</param>
+    		</interceptor>
+    		<interceptor name="sslInterceptor" class="com.rency.dpf.interceptors.SSLInterceptor">
+    			<param name="httpPort">${http.port}</param>
+    			<param name="httpsPort">${https.port}</param>
+    		</interceptor>
+    		<interceptor name="logInterceptor" class="com.rency.dpf.interceptors.LogInterceptor" />
+    		
+    		<interceptor-stack name="authStack">
+    			<!-- <interceptor-ref name="sslInterceptor"/> -->
+    			<interceptor-ref name="authInterceptor" />
+    			<interceptor-ref name="logInterceptor" />
+    			<interceptor-ref name="defaultStack" />
+    		</interceptor-stack>
+            <interceptor-stack name="jsonStack">
+                <interceptor-ref name="jsonInterceptor"/>
+                <interceptor-ref name="logInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+            
+            <interceptor-stack name="logStack">
+                <interceptor-ref name="logInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+    	</interceptors>
+    	
+    	<global-results>
+    		<result name="login">/common/login.jsp</result>
+    		<result name="loginInput" type="redirect">user!loginInput.do</result>
+    		<result name="error">/common/error.jsp</result>
+    		<result name="404">/common/404.jsp</result>
+    	</global-results>
+    	
+    	<global-exception-mappings>
+    		<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+    		<exception-mapping result="error" exception="org.rency.utils.exceptions.CoreException"></exception-mapping>
+    	</global-exception-mappings>
+    	
+    </package>
+    
+    <include file="struts-front.xml"></include>
+    <include file="struts-backend.xml"></include>
+    
+</struts>

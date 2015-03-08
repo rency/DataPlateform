@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+  		http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/data/mongo
+        http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/tx
+     	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:init.properties</value>
+			</list>
+		</property>
+	</bean>
+	<import resource="classpath:applicationContext-utils.xml" />
+	<import resource="classpath:applicationContext-crawler.xml" />
+	<import resource="classpath:applicationContext-lucene.xml" />
+	<import resource="classpath:applicationContext-manager.xml" />
+	<import resource="classpath:applicationContext-trigger.xml" />
+	<import resource="classpath:applicationContext-pushlet.xml" />
+	<!-- <import resource="classpath:applicationContext-activemq.xml" /> -->
+	
+	<context:annotation-config />
+	<context:component-scan base-package="com.rency.dpf" />
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.driver}"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/${db.name}?useUnicode=true&amp;characterEncoding=utf8"></property>
+		<property name="username" value="${db.username}"></property>
+		<property name="password" value="${db.password}"></property>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="maxWait" value="500"></property>
+		<property name="defaultAutoCommit" value="true"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="hibernateProperties">
+			<props>
+    			<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+		        <prop key="hibernate.cache.use_second_level_cache">true</prop>
+		        <prop key="hibernate.cache.use_structured_entries">true</prop>
+		        <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</prop>
+		        <prop key="hibernate.net.sf.ehcache.configurationResourceName">ehcache.xml</prop>
+				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+    		</props>
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.rency.dpf.beans</value>
+				<value>org.rency.pushlet.beans</value>
+				<value>org.rency.crawler.beans</value>
+				<value>org.rency.lucene.beans</value>
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="login*" read-only="true" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="list*" read-only="true" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="find*" read-only="true" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="query*" read-only="true" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="get*" read-only="true" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="is*" read-only="true" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="add*" read-only="false" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="save*" read-only="false" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="update*" read-only="false" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="modify*" read-only="false" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="change*" read-only="false" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="delete*" read-only="false" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+			<tx:method name="remove*" read-only="false" propagation="REQUIRED" isolation="DEFAULT" rollback-for="DataAccessException" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 免登录URL -->
+	<bean id="urlFilter" class="com.rency.dpf.beans.URLFilter">
+		<property name="filter">
+			<list>
+				<value>user!loginInput.do</value>
+				<value>user!login.do</value>
+				<value>index!error.do</value>
+				<value>user!logout.do</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

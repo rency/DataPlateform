@@ -1,0 +1,94 @@
+@CHARSET "UTF-8";
+body{margin:0px auto;padding:0px;font-family:Arial, Lucida, Verdana, Helvetica, sans-serif;font-size:14px;text-align:center;line-height:130%;background:url(../images/line_body_bg.gif) center -584px repeat;}
+input, textarea {border:1px solid #CECECE;font: bold 14px Arial, Helvetica, sans-serif;height:23px;border-top-left-radius:5px;border-top-right-radius:5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+select{margin:0px;width:150px;text-align:center;border:1px solid #CCCCCC;}
+input,select,textarea{border-radius: 3px 3px 3px 3px;}
+h1, h2, h3, h4, p, ol, ul,dl ,span,input{margin:0px;padding:0px;}
+h1, h2, h3, h4{font-family:Arial, Helvetica, sans-serif;}
+h1, h2{text-transform: lowercase;font-weight: normal;}
+h1{letter-spacing: -2px;font-size: 2.4em;}
+h2{letter-spacing: -1px;   font-size: 1.8em;}
+p, ol, dl,dd,ul,li{margin:0px;padding:0px;line-height:150%;list-style:none;}
+a{color:#666;text-decoration: none;}
+a:hover{text-decoration:none;color: #333;}
+div{margin:0px;padding:0px;}
+img{border:0px;margin:0px;padding:0px;}
+.clean{float:none;clear:both;height:0px;font-size:0px;line-height:0px;}
+
+/* header */
+.header{text-align:center;width:100%;height:100px;background:url('../images/header_bg.jpg') repeat-x scroll 0% 0% transparent;padding-top:26px;}
+.header_top{width:985px;height:125px;margin:0 auto;}
+.header_top .logo{float:left;padding-right:30px;}
+.header_top .txt{width:696px;float:left;height:70px;}
+.header_top .dynamic{height:19px;overflow:hidden;width:690px;float:left;padding-top:8px;}
+.header_top .dynamic ul{text-align:right;height:19px;}
+.header_top .dynamic li{height:19px;line-height:19px;width:690px;color:red;}
+.header_top .menu_icon{float:left;width:696px;height:60px;overflow:hidden;}
+.header_top .menu_icon div a{display:inline-block;width:150px;height: 60px;}
+.header_top .menu_icon .icon_1{width:132px;overflow:hidden;float:left;background:url(../images/footer_icon_hover.png) no-repeat scroll -8px -95px transparent}
+.header_top .menu_icon .icon_1 a:hover{background: url(../images/footer_icon_hover.png) no-repeat scroll -8px -2px transparent;overflow:hidden;}
+.header_top .menu_icon .icon_2{width:140px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -826px -95px transparent;float:left;}
+.header_top .menu_icon .icon_2 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -826px -2px transparent;overflow:hidden;}
+.header_top .menu_icon .icon_3{width:105px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -218px -95px transparent;float:left;}
+.header_top .menu_icon .icon_3 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -218px -2px transparent;overflow:hidden;}
+.header_top .menu_icon .icon_4{width:110px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -510px -95px transparent;float:left;}
+.header_top .menu_icon .icon_4 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -510px -2px transparent;overflow:hidden;}
+.header_top .menu_icon .icon_5{width:105px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -684px -95px transparent;float:left;}
+.header_top .menu_icon .icon_5 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -684px -2px transparent;overflow:hidden;}
+.header_top .menu_icon .icon_6{width:104px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -348px -95px transparent;float:left;}
+.header_top .menu_icon .icon_6 a:hover {background: url(../images/footer_icon_hover.png) no-repeat scroll -348px -2px transparent;overflow:hidden;}
+
+/* navigator */
+.navigator{text-align:center;width:100%;height:56px;}
+.navigator_main{text-align:center;width:985px;height:56px;z-index:9999;position:relative;margin:0px auto;background:url(../images/nav_bg.png) no-repeat;}
+.navigator_main ul{list-style:none;}
+.navigator_main li{float:left;}
+.navigator_main a{font-size:16px;width:88px;text-align:center;padding-top:25px; display:block;}
+.navigator_main a:hover{font-size:16px;font-weight:bold;}
+.navigator_main ul .contact{float:left;display:block;}
+.navigator_main .contact{padding-top:9px;}
+.telphone{float:right;width:115px;height:40px;background-color:#C0C0C0;padding-right:7px;}
+.telphone a{width:115px;padding-top:14px;font-size:18px;}
+.telphone a:hover{width:115px;color:red;padding-top:14px;font-size:18px;}
+.email{float:right;width:95px;cursor:pointer;height:40px;display:block;background:url(../images/email.png) no-repeat;}
+.email a{width:95px;height:40px;}
+.message{float:right;margin-right:15px;width:95px;cursor:pointer;height:40px;display:block;background:url(../images/message.png) no-repeat;}
+.message a{width:95px;height:40px;}
+
+.main{text-align:center;width:985px;margin:0px auto;min-height:350px;}
+
+/* footer */
+.footer{text-align:center;color:#999999;background-color:#fff;padding:9px 0px;margin-top:50px;width:100%;border-top:1px solid #dedede;}
+.footer_top{width:985px;text-align:center;margin:0px auto;}
+.footer_top .menu_icon{height:64px;width:965px;padding-left:35px;padding-bottom:20px;}
+.footer_top .menu_icon div a{width:161px;height:64px;display:block;}
+.footer_top .menu_icon .icon_1{width:165px;overflow:hidden;float:left;background:url(../images/footer_icon_hover.png) no-repeat scroll -8px -95px transparent}
+.footer_top .menu_icon .icon_1 a:hover{background: url(../images/footer_icon_hover.png) no-repeat scroll -8px -2px transparent;overflow:hidden;}
+.footer_top .menu_icon .icon_2{width:165px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -826px -95px transparent;float:left;}
+.footer_top .menu_icon .icon_2 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -826px -2px transparent;overflow:hidden;}
+.footer_top .menu_icon .icon_3{width:135px;margin-right:30px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -218px -95px transparent;float:left;}
+.footer_top .menu_icon .icon_3 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -218px -2px transparent;overflow:hidden;}
+.footer_top .menu_icon .icon_4{width:165px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -510px -95px transparent;float:left;}
+.footer_top .menu_icon .icon_4 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -510px -2px transparent;overflow:hidden;}
+.footer_top .menu_icon .icon_5{width:140px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -684px -95px transparent;float:left;}
+.footer_top .menu_icon .icon_5 a:hover{background:url(../images/footer_icon_hover.png) no-repeat scroll -684px -2px transparent;overflow:hidden;}
+.footer_top .menu_icon .icon_6{width:120px;overflow:hidden;background:url(../images/footer_icon_hover.png) no-repeat scroll -348px -95px transparent;float:left;}
+.footer_top .menu_icon .icon_6 a:hover {background: url(../images/footer_icon_hover.png) no-repeat scroll -348px -2px transparent;overflow:hidden;}
+
+.footer_menu a{margin:10px 5px;}
+.copyright{font-style:italic;font-size:14px;font-family:微软雅黑;padding-bottom:20px;}
+.serviceBox{cursor:pointer;position:fixed;right:0px;z-index:999;width:35px;display:none;}
+.serviceBox .qq{width:35px;height:65px;border-bottom:solid 1px #cecece;}
+.serviceBox .qq img{width:35px;height:65px;}
+.serviceBox .back_top{width:35px;height:65px;background:url(../images/backtop.png);cursor:pointer;}
+
+/* common*/
+.title1{font-family:"微软雅黑",Arial;font-size:24px;font-weight:normal;color:#5B5B5B;}
+.title2{font-family:"微软雅黑",Arial;font-size:20px;font-weight:normal;color:#555;}
+.title3{font-family:"微软雅黑",Arial;font-size:16px;font-weight:normal;color:#5B5B5B;}
+.title4{font-family:"微软雅黑",Arial;font-size:12px;font-weight:normal;color:#666;}
+
+.search_input{width:209px;height:29px;line-height:29px;padding-left:10px;background:url('../images/search_line.jpg') no-repeat scroll 0% 0% transparent;border:medium none;float:left;color:#777;font:Arial 12px;font-weight:normal;}
+.search_btn{width:72px;height:29px;background:url('../images/search_btn.jpg') no-repeat scroll 0% 0% transparent;border:medium none;float:left;}
+
+.content_line{height:10px;width:640px;background:url('../images/line.jpg') no-repeat scroll 0px -16px transparent;font-size:0px;clear:left;padding-bottom:4px;padding-top:4px;}
