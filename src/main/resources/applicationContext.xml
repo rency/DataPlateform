@@ -29,6 +29,7 @@
 	<import resource="classpath:applicationContext-manager.xml" />
 	<import resource="classpath:applicationContext-trigger.xml" />
 	<import resource="classpath:applicationContext-pushlet.xml" />
+	<import resource="classpath:applicationContext-webservice.xml" />
 	<!-- <import resource="classpath:applicationContext-activemq.xml" /> -->
 	
 	<context:annotation-config />

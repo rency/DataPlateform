@@ -329,6 +329,11 @@
 	  <version>${dpf.version}</version>
 	</dependency>
 	<dependency>
+	  <groupId>org.rency.ws</groupId>
+	  <artifactId>DPF-WebService</artifactId>
+	  <version>${dpf.version}</version>
+	</dependency>
+	<dependency>
 	  <groupId>org.rency.utils</groupId>
 	  <artifactId>DPF-Utils</artifactId>
 	  <version>${dpf.version}</version>
